@@ -1,4 +1,7 @@
 
-const fs = require("fs");
-let fileContent = fs.readFileSync(`${__dirname}/text.txt`, "utf8");
-console.log(fileContent);
+const fs = require('fs');
+const file = fs.createReadStream(`${__dirname}/text.txt`, 'utf8');
+
+file.on('data', (chunk) => {
+	console.log(chunk);
+})
